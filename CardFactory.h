@@ -4,7 +4,9 @@
 using namespace std;
 
 class CardFactory {
-    CardFactory();
-    static CardFactory* getFactory();
-    Deck getDeck();
+    Deck deck;
+    public:
+        CardFactory();
+        static CardFactory* getFactory();
+        Deck getDeck();
 };

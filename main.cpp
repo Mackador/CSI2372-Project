@@ -2,12 +2,10 @@
 #include "Card.h"
 #include "Chain.h"
 #include "Coins.h"
-#include "Deck.h"
 #include "DiscardPile.h"
 #include "Hand.h"
 #include "Player.h"
 #include "Table.h"
-#include "TradeArea.h"
 
 int main() {
 
@@ -27,7 +25,7 @@ int main() {
 
     Player players[] = {p1, p2};
 
-    while (deck.hasCards()) {
+    while (...) {
         for (Player p : players) {
             table.printHand();
             p.

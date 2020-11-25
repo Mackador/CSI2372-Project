@@ -1,10 +1,10 @@
 #include <iostream>
-#include "CardFactory.h"
-#include "Chain.h"
-
 using namespace std;
 
 class Player {
+    string name;
+    int coins;
+    Hand hand;
     public:
         Player(string&);
         Player(istream&, const CardFactory*);

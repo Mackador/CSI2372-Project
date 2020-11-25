@@ -1,9 +1,11 @@
 #include <iostream>
-#include "CardFactory.h"
+#include <vector>
+#include "Card.h"
 
 using namespace std;
 
-class Deck {
-    Deck(istream&, const CardFactory*);
-    Card* draw();
+class Deck : public vector<Card*> {
+    public:
+        Deck(istream&, const CardFactory*);
+        Card* draw();
 };
