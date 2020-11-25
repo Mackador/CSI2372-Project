@@ -1,10 +1,14 @@
 #include <iostream>
+#include "Chain.h"
+#include "Hand.h"
 using namespace std;
 
 class Player {
     string name;
-    int coins;
-    Hand hand;
+    int coins = 0;
+    int numChains = 0;
+    vector<Chain<Card*>> chains;
+    Hand* hand;
     public:
         Player(string&);
         Player(istream&, const CardFactory*);
@@ -13,7 +17,7 @@ class Player {
         Player& operator+=(int);
         int getMaxNumChains();
         int getNumChain();
-        Chain& operator[](int i);
+        Chain<Card*>& operator[](int i);
         void buyThirdChain();
         void printHand(ostream&, bool);
 };

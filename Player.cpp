@@ -2,11 +2,10 @@
 
 Player::Player(string &name) {
     this->name = name;
-    coins = 0;
 }
 
-Player::Player(istream &, const CardFactory *) {
-
+Player::Player(istream &stream, const CardFactory* cardFactory) {
+    hand = new Hand(stream, cardFactory);
 }
 
 string Player::getName() {
@@ -22,15 +21,15 @@ Player& Player::operator+=(int n) {
 }
 
 int Player::getMaxNumChains() {
-
+    return numChains;
 }
 
 int Player::getNumChain() {
-
+    return chains.size();
 }
 
-Chain& Player::operator[](int i) {
-
+Chain<Card*>& Player::operator[](int i) {
+    return chains.at(i);
 }
 
 void Player::buyThirdChain() {
@@ -41,6 +40,6 @@ void Player::printHand(ostream& stream, bool arg) {
     if (arg) {
         stream << "whole";
     } else {
-        stream << hand.top();
+        stream << hand->top();
     }
 }

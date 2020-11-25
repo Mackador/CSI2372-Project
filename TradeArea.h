@@ -1,6 +1,5 @@
 #include <iostream>
 #include <list>
-#include "Card.h"
 #include "CardFactory.h"
 
 using namespace std;
