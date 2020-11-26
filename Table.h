@@ -7,8 +7,7 @@
 using namespace std;
 
 class Table {
-    Player* p1;
-    Player* p2;
+    Player* players[2];
     Deck* deck;
     DiscardPile* discardPile;
     TradeArea* tradeArea;

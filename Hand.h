@@ -1,5 +1,7 @@
 #include <iostream>
 #include <list>
+#include "Card.h"
+
 using namespace std;
 
 class Hand {

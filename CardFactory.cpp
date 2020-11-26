@@ -1,4 +1,5 @@
 #include "CardFactory.h"
+#include "algorithm"
 
 CardFactory::CardFactory() {
     for (size_t i = 0; i < 104; i++) {
@@ -20,6 +21,7 @@ CardFactory::CardFactory() {
             deck.push_back(new Garden());
         }
     }
+    random_shuffle(deck.begin(), deck.end());
 }
 
 CardFactory* CardFactory::getFactory() {

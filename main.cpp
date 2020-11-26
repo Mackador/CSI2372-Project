@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Card.h"
 #include "Chain.h"
-#include "Coins.h"
 #include "DiscardPile.h"
 #include "Hand.h"
 #include "Player.h"
@@ -17,18 +16,15 @@ int main() {
     cin >> p2Name;
 
     Player p1(p1Name), p2(p2Name);
-    Deck deck;
-    Hand p1Hand, p2Hand;
-    Table table;
-
-
-
     Player players[] = {p1, p2};
+    CardFactory cardFactory;
+    Deck deck;
+    Table table(cin, &cardFactory);
 
-    while (...) {
+
+    while (!deck.empty()) {
         for (Player p : players) {
-            table.printHand();
-            p.
+            table.printHand(false);
         }
     }
 

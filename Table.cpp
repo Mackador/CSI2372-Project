@@ -8,5 +8,9 @@ Table::Table(istream &file, const CardFactory* cardFactory) {
 }
 
 void Table::printHand(bool arg) {
-
+    if (arg) {
+        for (Player* player : players) {
+            player->printHand(cout, arg);
+        }
+    }
 }
