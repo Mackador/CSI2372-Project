@@ -34,25 +34,25 @@ bool contains(Container const& container, typename Container::const_reference re
 }
 
 template <class InputIterator, class T>
-InputIterator findName(InputIterator firstName, InputIterator lastName, const T& value) {
-	while (firstName != lastName) {
-		if ((*firstName)->getName().compare(value) == 0) 
-			return firstName;
-		++firstName;
+InputIterator findName(InputIterator firstCard, InputIterator lastCard, const T& value) {
+	while (firstCard != lastCard) {
+		if ((*firstCard)->getName().compare(value) == 0) 
+			return firstCard;
+		++firstCard;
 	}
-	return lastName;
+	return lastCard;
 }
 
 
 bool containsName(list<Card*> const& container, string& reference) {
 
-	list<Card*>::const_iterator firstName = container.begin();
-	list<Card*>::const_iterator lastName = container.end();
+	list<Card*>::const_iterator firstCard = container.begin();
+	list<Card*>::const_iterator lastCard = container.end();
 
-	while (firstName != lastName) {
-		if ((*firstName)->getName().compare(reference) == 0) 
+	while (firstCard != lastCard) {
+		if ((*firstCard)->getName().compare(reference) == 0) 
 			return true;
-		++firstName;
+		++firstCard;
 	}
 	return false;
 }

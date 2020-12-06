@@ -39,31 +39,29 @@ public:
         return deck;
     }
 
-    Card* getCard(char);
+    Card* getCard(char type) {
+        Card* newCard;
+
+        if (type == "Blue")
+            newCard = new Blue();
+        else if (type == "Chili")
+            newCard = new Chili();
+        else if (type == "Stink")
+            newCard = new Stink();
+        else if (type == "Green")
+            newCard = new Green();
+        else if (type == "Soy")
+            newCard = new Soy();
+        else if (type == "Black")
+            newCard = new Black();
+        else if (type == "Red")
+            newCard = new Red();
+        else if (type == "Garden")
+            newCard = new Garden();
+
+        return newCard
+    }
 };
-
-Card* CardFactory::getCard(char type) {
-    Card* newCard;
-
-    if (type == "Blue")
-        newCard = new Blue();
-    else if (type == "Chili")
-        newCard = new Chili();
-    else if (type == "Stink")
-        newCard = new Stink();
-    else if (type == "Green")
-        newCard = new Green();
-    else if (type == "Soy")
-        newCard = new Soy();
-    else if (type == "Black")
-        newCard = new Black();
-    else if (type == "Red")
-        newCard = new Red();
-    else if (type == "Garden")
-        newCard = new Garden();
-
-    return newCard
-}
 
 
 #endif //CARDFACTORY_H
