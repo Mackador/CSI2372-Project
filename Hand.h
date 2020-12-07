@@ -37,7 +37,7 @@ Card* Hand::top() {
 
 ostream& operator<<(ostream &out, const Hand &hand) {
     for (Card* card : hand.cards) {
-        out << card << " ";
+        out << *card << " ";
     }
     return out;
 }

@@ -33,7 +33,7 @@ Card* DiscardPile::top() {
 
 void DiscardPile::print(ostream& out) {
     for (Card* card : cards) {
-        out << card << " ";
+        out << *card << " ";
     }
 }
 

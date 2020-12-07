@@ -19,7 +19,7 @@ Card* Deck::draw() {
 
 std::ostream& operator<<(std::ostream& out, const Deck& deck) {
     for (Card* card : deck) {
-        out << card << " ";
+        out << *card << " ";
     }
     return out;
 }
