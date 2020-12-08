@@ -1,10 +1,8 @@
-#ifndef CARD_H
-#define CARD_H
+#ifndef FINALPROJECT_CARD_H
+#define FINALPROJECT_CARD_H
+
 
 #include <iostream>
-#include <stdexcept>
-#include <climits>
-
 using namespace std;
 
 class Card {
@@ -13,82 +11,79 @@ public:
     virtual int getCardsPerCoin(int coins) const = 0;
     virtual string getName() const  = 0;
     virtual void print(ostream& out) const = 0;
-    friend ostream& operator<<(ostream &out, Card &card) {
-        card.print(cout);
-        return out;
-    }
+    friend ostream& operator<<(ostream &out, Card &card);
 };
 
 class Blue : public Card {
-    const int cardsPerCoin[4] = {4, 6, 8, 10};
-    const string name = "Blue";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
 class Chili : public Card {
-    const int cardsPerCoin[4] = {3, 6, 8, 9};
-    const string name = "Chili";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
 class Stink : public Card {
-    const int cardsPerCoin[4] = {3, 5, 7, 8};
-    const string name = "Stink";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
 class Green : public Card {
-    const int cardsPerCoin[4] = {3, 5, 6, 7};
-    const string name = "Green";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
 class Soy : public Card {
-    const int cardsPerCoin[4] = {2, 4, 6, 7};
-    const string name = "soy";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
 class Black : public Card {
-    const int cardsPerCoin[4] = {2, 4, 5, 6};
-    const string name = "black";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
 class Red : public Card {
-    const int cardsPerCoin[4] = {2, 3, 4, 5};
-    const string name = "Red";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
 class Garden : public Card {
-    const int cardsPerCoin[4] = {0, 2, 3, 0};
-    const string name = "garden";
+    static const int cardsPerCoin[4];
+    static const string name;
 public:
-    int getCardsPerCoin(int coins) const override { return cardsPerCoin[coins-1]; }
-    string getName() const override { return name; }
-    void print(ostream &out) const override { out << name[0]; }
+    int getCardsPerCoin(int coins) const override;
+    string getName() const override;
+    void print(ostream &out) const override;
 };
 
-#endif //CARD_H
+#endif //FINALPROJECT_CARD_H

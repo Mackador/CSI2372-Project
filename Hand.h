@@ -1,7 +1,13 @@
-#ifndef HAND_H
-#define HAND_H
+//
+// Created by Mackador on 12/7/2020.
+//
+
+#ifndef FINALPROJECT_HAND_H
+#define FINALPROJECT_HAND_H
+
 
 #include "Card.h"
+#include "CardFactory.h"
 
 #include <iostream>
 #include <list>
@@ -12,6 +18,7 @@ class Hand {
     list<Card*> cards;
 public:
     Hand() = default;
+    Hand(istream&, const CardFactory*);
     Hand& operator+=(Card*);
     Card* play();
     Card* top();
@@ -19,27 +26,5 @@ public:
     friend ostream& operator<<(ostream&, const Hand&);
 };
 
-Hand& Hand::operator+=(Card* card) {
-    cards.push_back(card);
-    return *this;
-}
 
-Card* Hand::play() {
-    Card* c = cards.front();
-    cards.pop_front();
-    return c;
-}
-
-Card* Hand::top() {
-    Card* c = cards.front();
-    return c;
-}
-
-ostream& operator<<(ostream &out, const Hand &hand) {
-    for (Card* card : hand.cards) {
-        out << *card << " ";
-    }
-    return out;
-}
-
-#endif //HAND_H
+#endif //FINALPROJECT_HAND_H

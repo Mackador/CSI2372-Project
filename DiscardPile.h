@@ -1,40 +1,25 @@
-#ifndef PROJECT2_DISCARDPILE_H
-#define PROJECT2_DISCARDPILE_H
+//
+// Created by Mackador on 12/7/2020.
+//
+
+#ifndef FINALPROJECT_DISCARDPILE_H
+#define FINALPROJECT_DISCARDPILE_H
 
 #include <vector>
 
 #include "Card.h"
+#include "CardFactory.h"
 
 class DiscardPile {
     vector<Card*> cards;
 public:
-    //DiscardPile(istream&, const CardFactory*);
+    DiscardPile(istream&, const CardFactory*);
     DiscardPile& operator+=(Card*);
     Card* pickUp();
-    Card* top();
+    Card * top() const;
     void print(ostream&);
-    friend std::ostream& operator<<(std::ostream&, const DiscardPile&);
+    friend ostream& operator<<(std::ostream&, const DiscardPile&);
 };
 
-DiscardPile& DiscardPile::operator+=(Card* card) {
-    cards.push_back(card);
-}
 
-Card* DiscardPile::pickUp() {
-    Card* c = cards.back();
-    cards.pop_back();
-    return c;
-}
-
-Card* DiscardPile::top() {
-    Card* c = cards.front();
-    return c;
-}
-
-void DiscardPile::print(ostream& out) {
-    for (Card* card : cards) {
-        out << *card << " ";
-    }
-}
-
-#endif //PROJECT2_DISCARDPILE_H
+#endif //FINALPROJECT_DISCARDPILE_H

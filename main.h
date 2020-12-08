@@ -1,18 +1,9 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef FINALPROJECT_MAIN_H
+#define FINALPROJECT_MAIN_H
 
 #include <iostream>
-#include <fstream>
-#include "Deck.h"
-#include "Player.h"
-#include "Table.h"
-#include "Chain.h"
-#include "DiscardPile.h"
-#include "TradeArea.h"
-#include "CardFactory.h"
-
-
 using namespace std;
 
+#include "Table.h"
 
-#endif //MAIN_H
+#endif //FINALPROJECT_MAIN_H
