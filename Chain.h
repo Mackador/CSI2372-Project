@@ -3,23 +3,24 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "Card.h"
+#include "CardFactory.h"
 using namespace std;
 
-class CardFactory;
+
 
 class Chain_Base {
     virtual void set_interface() = 0;
     char beanType;
-
 public:
-    char getType() { return beanType; }
+    char getBeanType() { return beanType; }
 };
 
 template <class T> class Chain {
 public:
     Chain(istream&, const CardFactory*);
     Chain();
-    Chain<T>& operator+=(T*);
+    Chain<T>& operator+=(Card*);
     int sell();
     friend ostream& operator<<(ostream& out, const Chain& chain1) {
         if(chain1.chain.empty()){
@@ -36,8 +37,8 @@ public:
         out << endl;
         return out;
     }
-    //Card* getCardFromString(char cardType);
-        //vector<Card*> chain;
+    
+    vector<Card*> chain;
 };
 
 template <class T> Chain<T>::Chain() = default;
@@ -54,48 +55,52 @@ template <class T> Chain<T>::Chain(istream& istream, const CardFactory* factory)
     chainString.erase(std::remove(chainString.begin(), chainString.end(), ' '), chainString.end());
 
     for (int i = 0; chainString[i] != '\0'; i++) {
-        //Card* card = getCardFromString(chainString[i]);
+        Card* card;
+        char val = chainString[i];
+        if (val == 'B')
+        card = new Blue;
+        else if (val == 'C')
+            card = new Chili;
+        else if (val == 'S')
+            card = new Stink;
+        else if (val == 'G')
+            card = new Green;
+        else if (val == 's')
+            card = new Soy;
+        else if (val == 'b')
+            card = new Black;
+        else if (val == 'R')
+            card = new Red;
+        else if (val == 'g')
+            card = new Garden;
+        else
+            throw invalid_argument("cardType is invalid");
+
         chain.push_back(card);
     }
 }
 
-template <class T> Chain<T>& Chain<T>::operator+=(T* card) {
-    chain.push_back(card);
+template <class T> Chain<T>& Chain<T>::operator+=(Card* card) {
+    if (card->getName() == T::name){
+        chain.push_back(card);
+    } else{
+        throw IllegalTypeException();
+    }
+    
     return *this;
 }
 
 template <class T> int Chain<T>::sell() {
-    if (chain.empty()){
-        return 0;
-    }
-    int numOfCoins = chain.front()->getCoinsPerCard(chain.size());
-    return numOfCoins;
+    
+    for (int coins = 4; coins > 0; i--)
+	{
+		if (chain.size() >= chain[0]->getCardsPerCoin(coins))
+			return coins;
+	}
+	return 0;
 }
 
 
-// template <class T> Card* Chain<T>::getCardFromString(char cardType) {
-//     Card* card;
-//     if (cardType == 'B')
-//         card = new Blue;
-//     else if (cardType == 'C')
-//         card = new Chili;
-//     else if (cardType == 'S')
-//         card = new Stink;
-//     else if (cardType == 'G')
-//         card = new Green;
-//     else if (cardType == 's')
-//         card = new Soy;
-//     else if (cardType == 'b')
-//         card = new Black;
-//     else if (cardType == 'R')
-//         card = new Red;
-//     else if (cardType == 'g')
-//         card = new Garden;
-//     else
-//         throw invalid_argument("cardType is invalid");
-
-//     return card;
-// }
 
 
 #endif //CHAIN_H
