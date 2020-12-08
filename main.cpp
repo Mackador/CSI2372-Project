@@ -74,12 +74,36 @@ int main() {
 
     while (!deck->empty()) {
         for (Player* p : players) {
-            cout << *table;
-            p->addToHand(deck->draw());
-            if (tradeArea->numCards() != 0) {
-                // Add beancards from the TradeArea to chains or discard them.
+            cout << "Would you like to pause the game? (Y/N)" << endl;
+            cin >> choice;
+            if(choice == "Y"){
+                //save game
+                //make sure exits the loops as well.
+            } else{
+                cout << *table;
+                p->addToHand(deck->draw());
+                if (tradeArea->numCards() != 0) {
+                    //print trade area
+                    
+                    // Add beancards from the TradeArea to chains or discard them
+                    //NEEDS TO BE IMPLEMENTED
+                    cout << "Would you like to add beancards from the TradeArea to chains? (Y/N)" << endl;
+                    cin >> choice;
+                    if(choice == "Y"){
+                        //add beancards from tradeArea
+                    } else{
+                        //discard beancards from tradeArea
+                        for(int i = 0; i < tradeArea->numCards(); i++){
+                            //this needs to be coded. I tried making a helper func in tradeArea but not compiling.
+
+                        }
+                        
+                    }
+
+                }
+                p->play();
             }
-            p->play();
+            
             // ......................
         }
     }

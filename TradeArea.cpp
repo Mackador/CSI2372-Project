@@ -33,6 +33,10 @@ int TradeArea::numCards() {
     return cards.size();
 }
 
+
+
+
+
 ostream& operator<<(ostream &out, const TradeArea &tradeArea) {
     if (tradeArea.cards.size() == 0) {
         out << "Empty";
