@@ -47,10 +47,10 @@ Table::~Table() {}
 
 bool Table::winner(string& playerName) {
 	if (players[0].getNumCoins() > players[1].getNumCoins())
-		name = players[0].getName();
+		playerName = players[0].getName();
 	else
-		name = players[1].getName();
-	return deck->empty();
+		playerName = players[1].getName();
+	return gameDeck->empty();
 }
 
 Table::Table(istream& in, CardFactory* cardFactory)
