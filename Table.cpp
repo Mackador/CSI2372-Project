@@ -41,6 +41,40 @@ ostream& operator<<(ostream &out, const Table &table) {
     out << p2 << endl;
     out << "Deck: " << *d << endl;
     out << "DiscardPile: " << *dp << endl;
-    out << "TradeArea: " << *ta;
+    out << "TradeArea: " << *ta << endl;
     return out;
+}
+
+void Table::write() {
+    Player* p1 = players[0];
+    Player* p2 = players[1];
+    Deck* d = deck;
+    DiscardPile* dp = discardPile;
+    TradeArea* ta = tradeArea;
+
+    //p1.write();
+    //p2.write();
+    //(*d).write();
+    //(*dp).write();
+    //(*ta).write();
+}
+
+Player* Table::getPlayer1() {
+    return players[0];
+}
+
+Player* Table::getPlayer2() {
+    return players[1];
+}
+
+Deck* Table::getDeck() {
+    return deck;
+}
+
+DiscardPile* Table::getDiscardPile() {
+    return discardPile;
+}
+
+TradeArea* Table::getTradeArea() {
+    return tradeArea;
 }

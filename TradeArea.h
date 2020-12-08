@@ -16,6 +16,7 @@
 class TradeArea {
     list<Card*> cards;
 public:
+    TradeArea() = default;
     TradeArea(istream&, const CardFactory*);
     TradeArea& operator+=(Card*);
     bool legal(Card*);

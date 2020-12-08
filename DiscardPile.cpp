@@ -30,7 +30,15 @@ void DiscardPile::print(ostream& out) {
     }
 }
 
+int DiscardPile::numCards() {
+    return cards.size();
+}
+
 ostream& operator<<(ostream &out, const DiscardPile &discardPile) {
-    out << *discardPile.top();
+    if (discardPile.cards.size() == 0) {
+        out << "Empty";
+    } else {
+        out << *discardPile.top();
+    }
     return out;
 }

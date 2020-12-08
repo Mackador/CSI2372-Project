@@ -13,11 +13,13 @@
 class DiscardPile {
     vector<Card*> cards;
 public:
+    DiscardPile() = default;
     DiscardPile(istream&, const CardFactory*);
     DiscardPile& operator+=(Card*);
     Card* pickUp();
     Card * top() const;
     void print(ostream&);
+    int numCards();
     friend ostream& operator<<(std::ostream&, const DiscardPile&);
 };
 
