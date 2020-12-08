@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "Table.h"
 int main() {
     Player* player1;
     Player* player2;
@@ -48,4 +48,29 @@ int main() {
     
     
     return 0;
+}
+
+static void save(Table& table) {
+
+    ofstream saveFile("lastGameSaved.txt");
+
+    if (saveFile) {
+
+        saveFile << table;
+        saveFile.close();
+    }
+}
+
+
+static Table* load() {
+    CardFactory* cardFactory = CardFactory::getFactory();
+
+    ifstream inputFile("lastGameSaved.txt");
+    if (inputFile.is_open()) {
+        Table* table = new Table(inputFile, cardFactory);
+        return table;
+    }
+    else
+        return NULL;
+
 }

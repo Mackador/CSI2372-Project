@@ -12,6 +12,7 @@ template <class T> T* loadLine(istream &file, const CardFactory* cardFactory) {
     return new T(lineStream, cardFactory);
 }
 
+
 Table::Table(istream &file, const CardFactory* cardFactory) {
     deck = loadLine<Deck>(file, cardFactory);
     discardPile = loadLine<DiscardPile>(file, cardFactory);
@@ -43,4 +44,23 @@ ostream& operator<<(ostream &out, const Table &table) {
     out << "DiscardPile: " << *dp << endl;
     out << "TradeArea: " << *ta;
     return out;
+}
+
+Player* Table::getPlayers(int index) const
+{
+    return players[index];
+}
+
+Deck* Table::getDeck() const
+{
+    return deck;
+}
+
+DiscardPile* Table::getDiscardPile() const {
+    return discardPile;
+}
+
+TradeArea* Table::getTradeArea() const
+{
+    return tradeArea;
 }
