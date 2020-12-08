@@ -77,7 +77,7 @@ template <class T> Chain<T>::Chain(istream& istream, const CardFactory* cFactory
             card = new Red;
         }
         else{
-            throw invalid_argument("cardType is invalid");
+            throw invalid_argument("Not valid card type!");
         }
         elems.push_back(card);
     }
