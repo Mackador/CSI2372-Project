@@ -25,6 +25,13 @@ public:
     bool win(string&);
     void printHand(bool);
     friend ostream& operator<<(ostream & out, const Table &table);
+
+    Player* getPlayers(int index) const;
+    Deck* getDeck() const;
+    DiscardPile* getDiscardPile() const;
+    TradeArea* getTradeArea() const;
+
+
 };
 
 
