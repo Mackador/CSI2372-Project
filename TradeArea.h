@@ -1,10 +1,12 @@
 #ifndef TRADEAREA_H
 #define TRADEAREA_H
+
 #include "Card.h"
+#include "CardFactory.h"
 #include <vector>
 #include <list>
 #include <iostream>
-#include "CardFactory.h"
+
 
 class TradeArea {
 public:
@@ -93,7 +95,7 @@ bool TradeArea::emptyHand()
 
 Card* TradeArea::tradeCards(string cardName)
 {
-	if (!empty()) {
+	if (!emptyHand()) {
 		list<Card*>::iterator iter = playerCards->begin();
 		while (iter != playerCards->end()) {
 			if (cardName.compare((**iter).getName()) == 0) {
