@@ -1,9 +1,5 @@
 #include "Hand.h"
 
-Hand::Hand(istream &file, const CardFactory* cardFactory) {
-
-}
-
 Hand& Hand::operator+=(Card* card) {
     cards.push_back(card);
     return *this;
@@ -21,7 +17,8 @@ Card* Hand::top() {
 }
 
 Card* Hand::operator[](int i) {
-
+    vector<Card*> v{begin(cards), end(cards)};
+    return v.at(i);
 }
 
 ostream& operator<<(ostream &out, const Hand &hand) {
