@@ -114,8 +114,8 @@ void Player::addToHand(Card* card) {
     hand += card;
 }
 
-void Player::play() {
-    hand.play();
+Card* Player::play() {
+    return hand.play();
 }
 
 void Player::addToChain(Card* c) {

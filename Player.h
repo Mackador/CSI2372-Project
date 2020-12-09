@@ -38,7 +38,7 @@ public:
     void buyThirdChain();
     void printHand(ostream&, bool);
     void addToHand(Card*);
-    void play();
+    Card* play();
     void addToChain(Card* c);
     friend ostream& operator<<(ostream&, Player*);
 };
