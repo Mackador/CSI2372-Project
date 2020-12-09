@@ -12,7 +12,6 @@
 #include <iostream>
 #include <list>
 #include <iterator>
-//#include <DiscardPile.h>
 
 class TradeArea {
     list<Card*> cards;
@@ -23,7 +22,6 @@ public:
     bool legal(Card*);
     Card* trade(string);
     int numCards();
-    //TradeArea& discardArea(DiscardPile*);
     friend ostream& operator<<(ostream&, const TradeArea&);
 };
 

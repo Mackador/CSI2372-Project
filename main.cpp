@@ -1,7 +1,6 @@
 #include "main.h"
 
 static void save(Table& table) {
-
     ofstream saveFile("new_save.txt");
     if (saveFile) {
         saveFile << table;
@@ -9,21 +8,18 @@ static void save(Table& table) {
     }
 }
 
-static Table* load() {
-    CardFactory* cardFactory = CardFactory::getFactory();
-
-    ifstream inputFile("lastGameSaved.txt");
-    if (inputFile.is_open()) {
-        Table* table = new Table(inputFile, cardFactory);
+static Table* load(Table* table, Player* p1, Player* p2, Deck* deck, DiscardPile* discardPile, TradeArea* tradeArea, CardFactory* instance) {
+    string fileName;
+    cout << "Please enter the file name:" << endl;
+    cin >> fileName;
+    ifstream file(fileName);
+    if (file.is_open()) {
+        table = new Table(file, instance);
         return table;
-    }
-    else
-        return NULL;
-
+    } else { return NULL; }
 }
 
 int main() {
-
     Table* table;
     Player* p1;
     Player* p2;
@@ -36,11 +32,7 @@ int main() {
     cout << "Would you like to load from a previous save or play a new game? (Y/N)" << endl;
     cin >> choice;
     if (choice == "Y") {
-        string fileName;
-        cout << "Please enter the file name:" << endl;
-        cin >> fileName;
-        ifstream file(fileName);
-        table = new Table(file, instance);
+        table = load(table, p1, p2, deck, discardPile, tradeArea, instance);
         p1 = table->getPlayer1();
         p2 = table->getPlayer2();
         deck = table->getDeck();
@@ -72,41 +64,30 @@ int main() {
 
     Player* players[2] = {p1, p2};
 
-    while (!deck->empty()) {
-        for (Player* p : players) {
-            cout << "Would you like to pause the game? (Y/N)" << endl;
-            cin >> choice;
-            if(choice == "Y"){
-                //save game
-                //make sure exits the loops as well.
-            } else{
-                cout << *table;
-                p->addToHand(deck->draw());
-                if (tradeArea->numCards() != 0) {
-                    //print trade area
-                    
-                    // Add beancards from the TradeArea to chains or discard them
-                    //NEEDS TO BE IMPLEMENTED
-                    cout << "Would you like to add beancards from the TradeArea to chains? (Y/N)" << endl;
-                    cin >> choice;
-                    if(choice == "Y"){
-                        //add beancards from tradeArea
-                    } else{
-                        //discard beancards from tradeArea
-                        for(int i = 0; i < tradeArea->numCards(); i++){
-                            //this needs to be coded. I tried making a helper func in tradeArea but not compiling.
+    string winner;
+    while (!table->win(winner)) {
+        string choice;
+        cout << "Would you like to save the game or continue playing? (S/C)" << endl;
+        cin >> choice;
 
-                        }
-                        
-                    }
+        if (choice == "S") {
+            save(*table);
+            return 0;
 
-                }
+        } else if (choice == "S") {
+            for (Player* p : players) {
                 p->play();
+                // If TradeArea is not empty Add beancards from the TradeArea to chains or discard them.
+                p->play();
+                // If chain is ended, cards for chain are removed and player receives coin(s)
+
+
+
+                for (int i = 0; i < 2 && !deck->empty(); i++) {
+                    p->addToHand(deck->draw());
+                }
             }
-            
-            // ......................
         }
     }
-
     return 0;
 }

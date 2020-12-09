@@ -28,33 +28,47 @@ Player::Player(istream& file, const CardFactory* cardFactory) {
         hand += cardFactory->stringToCard(c);
     }
 
-    Chain_Base* cb;
+    Chain_Base *chainBase;
+    string temp;
 
-    /*for (int i = 0; i < numChains; i++) {
+    for (int i = 0; i < numChains; i++) {
         file >> line;
         auto in = stringstream(line);
-        switch (line[0]) {
-            case 'B':
-                chains.push_back(new Chain<Blue>(in, cardFactory));
-            case 'C':
-                chains.push_back(new Chain<Chili>(in, cardFactory));
-            case 'S':
-                chains.push_back(new Chain<Stink>(in, cardFactory));
-            case 'G':
-                chains.push_back(new Chain<Green>(in, cardFactory));
-            case 's':
-                chains.push_back(new Chain<Soy>(in, cardFactory));
-            case 'b':
-                chains.push_back(new Chain<Black>(in, cardFactory));
-            case 'R':
-                chains.push_back(new Chain<Red>(in, cardFactory));
-            case 'g':
-                chains.push_back(new Chain<Garden>(in, cardFactory));
+        if (line == "Blue") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Blue>(in, cardFactory);
+        } else if (line == "Chili") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Chili>(in, cardFactory);
+        } else if (line == "Stink") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Stink>(in, cardFactory);
+        } else if (line == "Green") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Green>(in, cardFactory);
+        } else if (line == "soy") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Soy>(in, cardFactory);
+        } else if (line == "black") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Black>(in, cardFactory);
+        } else if (line == "Red") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Red>(in, cardFactory);
+        } else if (line == "garden") {
+            file >> temp;
+            auto in = stringstream(temp);
+            chainBase = new Chain<Garden>(in, cardFactory);
         }
-    }*/
-
-
-
+        chains.push_back(chainBase);
+    }
 }
 
 // Returns the name of the player
@@ -104,10 +118,41 @@ void Player::play() {
     hand.play();
 }
 
+void Player::addToChain(Card* c) {
+    Chain_Base* chainBase;
+    std::string s = c->getName();
+    if (s == "Blue")
+        chainBase = new Chain<Blue>();
+    else if (s == "Blue")
+        chainBase = new Chain<Chili>();
+    else if (s == "Chili")
+        chainBase = new Chain<Stink>();
+    else if (s == "Stink")
+        chainBase = new Chain<Stink>();
+    else if (s == "Green")
+        chainBase = new Chain<Green>();
+    else if (s == "soy")
+        chainBase = new Chain<Soy>();
+    else if (s == "black")
+        chainBase = new Chain<Black>();
+    else if (s == "garden")
+        chainBase = new Chain<Garden>();
+    else { cout << "Invalid"; }
+
+    *chainBase += c;
+    chains.push_back(chainBase);
+}
+
+
 ostream& operator<<(ostream& out, Player* p) {
-    out << "Name: " << p->getName() << endl;
-    out << "Number of Coins: " << p->getNumCoins() << endl;
-    out << "Hand: " << p->hand << endl;
-    //out << "Chains: " << p->chains << endl;
+    out << p->name << endl;
+    out << p->numCoins << endl;
+    out << p->maxNumChains << endl;
+    out << p->numChains << endl;
+    out << p->hand;
+    for (Chain_Base* c : p->chains) {
+        out << endl;
+        c->print(out);
+    }
     return out;
 }

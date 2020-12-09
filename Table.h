@@ -25,7 +25,7 @@ public:
     bool win(string&);
     void printHand(bool);
     friend ostream& operator<<(ostream & out, const Table &table);
-    void write();
+    void write(ofstream&);
     Player* getPlayer1();
     Player* getPlayer2();
     Deck* getDeck();

@@ -20,6 +20,10 @@ Card* Hand::top() {
     return c;
 }
 
+Card* Hand::operator[](int i) {
+
+}
+
 ostream& operator<<(ostream &out, const Hand &hand) {
     for (Card* card : hand.cards) {
         out << *card;

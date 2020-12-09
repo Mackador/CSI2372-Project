@@ -35,28 +35,14 @@ ostream& operator<<(ostream &out, const Table &table) {
     DiscardPile* dp = table.discardPile;
     TradeArea* ta = table.tradeArea;
 
-    out << "Player 1:" << endl;
+    out << *d << endl;
+    (*dp).print(out);
+    out << endl;
+    out << *ta << endl;
     out << p1 << endl;
-    out << "Player 2:" << endl;
     out << p2 << endl;
-    out << "Deck: " << *d << endl;
-    out << "DiscardPile: " << *dp << endl;
-    out << "TradeArea: " << *ta << endl;
+
     return out;
-}
-
-void Table::write() {
-    Player* p1 = players[0];
-    Player* p2 = players[1];
-    Deck* d = deck;
-    DiscardPile* dp = discardPile;
-    TradeArea* ta = tradeArea;
-
-    //p1.write();
-    //p2.write();
-    //(*d).write();
-    //(*dp).write();
-    //(*ta).write();
 }
 
 Player* Table::getPlayer1() {
@@ -77,4 +63,20 @@ DiscardPile* Table::getDiscardPile() {
 
 TradeArea* Table::getTradeArea() {
     return tradeArea;
+}
+
+bool Table::win(string &winner) {
+    Player* p1 = players[0];
+    Player* p2 = players[1];
+    if (!deck->empty()) {
+        return false;
+    }
+    if (p1->getNumCoins() == p2->getNumCoins()) {
+        winner = p1->getName() + "and" + p2->getName();
+    } else {
+        if (p1->getNumCoins() > p2->getNumCoins()) {
+            winner = p1->getName();
+        } else { winner = p2->getName(); }
+    }
+    return true;
 }

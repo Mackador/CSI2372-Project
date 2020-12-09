@@ -39,6 +39,7 @@ public:
     void printHand(ostream&, bool);
     void addToHand(Card*);
     void play();
+    void addToChain(Card* c);
     friend ostream& operator<<(ostream&, Player*);
 };
 

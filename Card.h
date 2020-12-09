@@ -16,53 +16,58 @@ public:
 
 class Blue : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
 };
+
 
 class Chili : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
 };
+
 
 class Stink : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
 };
+
 
 class Green : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
 };
+
 
 class Soy : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
 };
 
+
 class Black : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
@@ -70,17 +75,18 @@ public:
 
 class Red : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
 };
 
+
 class Garden : public Card {
     static const int cardsPerCoin[4];
-    static const string name;
 public:
+    static const string name;
     int getCardsPerCoin(int coins) const override;
     string getName() const override;
     void print(ostream &out) const override;
