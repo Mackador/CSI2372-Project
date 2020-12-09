@@ -24,7 +24,6 @@ public:
     Table(Player* p1, Player* p2, Deck* d, DiscardPile* dP, TradeArea* tA);
     bool win(string&);
     void printHand(bool);
-    void clearTradeArea();
     friend ostream& operator<<(ostream & out, const Table &table);
     void write(ofstream&);
     Player* getPlayer1();

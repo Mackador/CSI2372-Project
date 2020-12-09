@@ -15,7 +15,6 @@
 
 class TradeArea {
     list<Card*> cards;
-    friend class Table;
 public:
     TradeArea() = default;
     TradeArea(istream&, const CardFactory*);

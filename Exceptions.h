@@ -28,5 +28,4 @@ public:
     }
 };
 
-
 #endif //FINALPROJECT_EXCEPTIONS_H

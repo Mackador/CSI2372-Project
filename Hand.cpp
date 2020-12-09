@@ -30,10 +30,3 @@ ostream& operator<<(ostream &out, const Hand &hand) {
     }
     return out;
 }
-bool Hand::isEmpty()
-{
-    return cards.empty();
-}
-int Hand::length() {
-    return cards.size();
-}

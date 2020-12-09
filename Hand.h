@@ -23,8 +23,6 @@ public:
     Card* play();
     Card* top();
     Card* operator[](int);
-    bool isEmpty();
-    int length();
     friend ostream& operator<<(ostream&, const Hand&);
 };
 
