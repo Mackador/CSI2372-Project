@@ -30,7 +30,7 @@ Player::Player(istream& file, const CardFactory* cardFactory) {
 
     Chain_Base* cb;
 
-    /*for (int i = 0; i < numChains; i++) {
+    for (int i = 0; i < numChains; i++) {
         file >> line;
         auto in = stringstream(line);
         switch (line[0]) {
@@ -51,7 +51,7 @@ Player::Player(istream& file, const CardFactory* cardFactory) {
             case 'g':
                 chains.push_back(new Chain<Garden>(in, cardFactory));
         }
-    }*/
+    }
 
 
 
@@ -103,7 +103,17 @@ void Player::addToHand(Card* card) {
 void Player::play() {
     hand.play();
 }
-
+bool Player::isHandEmpty()
+{
+    return hand.isEmpty();
+}
+int Player::length() {
+    return hand.length();
+}
+Card* Player::deleteCard(int i)
+{
+    return hand[i];
+}
 ostream& operator<<(ostream& out, Player* p) {
     out << "Name: " << p->getName() << endl;
     out << "Number of Coins: " << p->getNumCoins() << endl;

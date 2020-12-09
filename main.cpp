@@ -84,24 +84,56 @@ int main() {
                 p->addToHand(deck->draw());
                 if (tradeArea->numCards() != 0) {
                     //print trade area
-                    
+                    cout << *tradeArea << endl;
+                    cout << p << endl;
                     // Add beancards from the TradeArea to chains or discard them
                     //NEEDS TO BE IMPLEMENTED
                     cout << "Would you like to add beancards from the TradeArea to chains? (Y/N)" << endl;
                     cin >> choice;
                     if(choice == "Y"){
-                        //add beancards from tradeArea
-                    } else{
+                        p->play();
+                    } else {
                         //discard beancards from tradeArea
-                        for(int i = 0; i < tradeArea->numCards(); i++){
+                        table->clearTradeArea();
+                        /*for(int i = 0; i < tradeArea->numCards(); i++){
                             //this needs to be coded. I tried making a helper func in tradeArea but not compiling.
 
-                        }
+                        }*/
+                        bool check;
+                        do {
+                            cout << "Playing top card: ";
+                            p->printHand(cout, false);
+                            p->play();
+
+                            cout << p << endl;
+                            cout << "Your hand is: " << endl;
+                            p->printHand(cout, true);
+                            bool check;
+                            cout << "Play another card? (Y/N) " << endl;
+                            cin >> check;
+                        } while (check && !(p->isHandEmpty()));
+
+
                         
                     }
 
+                    if (p->isHandEmpty()) {
+                        p->printHand(cout, true);
+                        cout << "Please select card to get rid of: (1-1000)" << endl;
+                        int cardNum = 1000;
+
+                        while (cardNum < 0 || cardNum >= p->length()) {
+                            if (!(cin >> cardNum)) {
+                                cin.clear();
+                                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+                            }
+                        }
+
+                        *discardPile += p->deleteCard(cardNum);
+
+                    }
+
                 }
-                p->play();
             }
             
             // ......................

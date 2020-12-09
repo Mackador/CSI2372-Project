@@ -78,3 +78,9 @@ DiscardPile* Table::getDiscardPile() {
 TradeArea* Table::getTradeArea() {
     return tradeArea;
 }
+void Table::clearTradeArea() {
+    for (Card* c : tradeArea->cards) {
+        *discardPile += c;
+    }
+    tradeArea->cards.clear();
+}

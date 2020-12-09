@@ -39,6 +39,9 @@ public:
     void printHand(ostream&, bool);
     void addToHand(Card*);
     void play();
+    bool isHandEmpty();
+    int length();
+    Card* deleteCard(int);
     friend ostream& operator<<(ostream&, Player*);
 };
 
